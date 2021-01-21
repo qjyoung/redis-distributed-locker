@@ -87,8 +87,7 @@ public class ExcelExport {
     
     public static class ValueHandlerList<T> extends ArrayList<ValueHandler<T>> {
         public ValueHandlerList<T> append(String title, Function<T, String> mapper) {
-            add(new ValueHandler<>(title, mapper));
-            return this;
+            return append(title, 0, mapper);
         }
         
         public ValueHandlerList<T> append(String title, int chars, Function<T, String> mapper) {
@@ -101,13 +100,6 @@ public class ExcelExport {
         private String title;
         private int chars;
         private Function<T, String> mapper;
-        
-        public ValueHandler() {
-        }
-        
-        public ValueHandler(String title, Function<T, String> mapper) {
-            this(title, 0, mapper);
-        }
         
         public ValueHandler(String title, int chars, Function<T, String> mapper) {
             this.title = title;

@@ -25,6 +25,7 @@ public class ExportDemoController {
         // handlers
         ExcelExport.ValueHandlerList<User> handlers = new ExcelExport.ValueHandlerList<>();
         handlers.append("姓名", User::getName);
+        handlers.append("性别", User::getSex);
         handlers.append("生日", 20, user -> formatToString(user.getBirthday() * 1000));
         handlers.append("作品", 50, User::getWorks);
         // 构造excel导出对象
@@ -46,27 +47,28 @@ public class ExportDemoController {
     @AllArgsConstructor
     public static class User {
         String name;
+        String sex;
         long birthday;
         String works;
     }
     
     public List<User> getChinese() {
         List<User> users = new ArrayList<>();
-        users.add(new User("成龙", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("成龙", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("成龙", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("成龙", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("成龙", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("成龙", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("成龙", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("成龙", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("成龙", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("成龙", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
         return users;
     }
     
     public List<User> getForeigners() {
         List<User> users = new ArrayList<>();
-        users.add(new User("JackChan", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("JackChan", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("JackChan", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("JackChan", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
-        users.add(new User("JackChan", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("JackChan", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("JackChan", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("JackChan", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("JackChan", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
+        users.add(new User("JackChan", "男", -496583483L, "《龙兄虎弟》《我是谁》《尖峰时刻》《飞鹰计划》《醉拳》"));
         return users;
     }
 }
