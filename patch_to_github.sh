@@ -27,7 +27,7 @@ if [ -z "$(git branch | grep github_latest)" ]; then
   rm -rf patch_to_github.sh
   git add -A
   git commit -am "latest"
-#  git push github HEAD:master --force
+  git push github HEAD:master --force
 else
   myLog "patch start..."
   myLog "changes between the branches: $(git diff master github_latest --stat)\e"
@@ -39,7 +39,7 @@ else
 
   git add .
   git commit -m "latest"
-#  git push github HEAD:master
+  git push github HEAD:master
   myLog "patched success"
 fi
 
