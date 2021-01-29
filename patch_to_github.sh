@@ -21,27 +21,25 @@ git tag "github-${version}"
 git config user.name "Harry Potter"
 git config user.email "harry@potter.com"
 
-if [ -z "$(git branch | grep github_latest)" ]; then
-  myLog "checkout new branch github_latest"
-  git checkout --orphan github_latest
-  rm -rf patch_to_github.sh
-  git add -A
-  git commit -am "latest"
-  git push github HEAD:master --force
+if ! git branch | grep -q github_master; then
+  myLog "checkout new branch github_master"
+  git checkout --orphan github_master
 else
   myLog "patch start..."
-  myLog "changes between the branches: $(git diff master github_latest --stat)\e"
+  myLog "changes between the branches: $(git diff master github_master --stat)"
 
-  git checkout github_latest
-  git diff github_latest master >>tmp.patch
+  git checkout github_master
+  git diff github_master master >>tmp.patch
   git apply tmp.patch
-  rm -rf tmp.patch patch_to_github.sh
-
-  git add .
-  git commit -m "latest"
-  git push github HEAD:master
-  myLog "patched success"
 fi
+
+rm -rf tmp.patch patch_to_github.sh
+git add .
+git commit -m "latest"
+
+myLog "pushing..."
+
+git push github HEAD:master
 
 myLog "revert user info"
 git config user.name "${userName}"
